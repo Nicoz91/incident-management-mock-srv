@@ -25,3 +25,19 @@ modules:
       - name: srv-api # required by consumers of CAP services (e.g. approuter)
         properties:
           srv-url: ${default-url}
+    requires:
+      - name: mockserver-destination
+      - name: mockserver-messaging
+
+resources:
+  - name: mockserver-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+  - name: mockserver-messaging
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: enterprise-messaging
+      service-plan: default
+      path: ./event-mesh.json
