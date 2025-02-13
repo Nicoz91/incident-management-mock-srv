@@ -5,7 +5,7 @@ global:
   imagePullSecret:
     name: docker-registry
   image:
-    registry: nicoz91/mockserver-srv
+    registry: nicoz91
     tag: latest
 srv:
   bindings:
