@@ -28,15 +28,6 @@ modules:
     requires:
       - name: mockserver-destination
       - name: mockserver-messaging
-      - name: mockserver-db
-
-  - name: mockserver-db-deployer
-    type: hdb
-    path: gen/db
-    parameters:
-      buildpack: nodejs_buildpack
-    requires:
-      - name: mockserver-db
 
 resources:
   - name: mockserver-destination
@@ -50,8 +41,3 @@ resources:
       service: enterprise-messaging
       service-plan: default
       path: ./event-mesh.json
-  - name: mockserver-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
