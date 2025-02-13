@@ -5,7 +5,7 @@ global:
   imagePullSecret:
     name: docker-registry
   image:
-    registry: nicoz91/public-kyma-images
+    registry: nicoz91/mockserver-srv
     tag: latest
 srv:
   bindings:
