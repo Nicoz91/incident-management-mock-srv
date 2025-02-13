@@ -5,14 +5,17 @@ global:
   imagePullSecret:
     name: docker-registry
   image:
-    registry: nicoz91/public-kyma-images
+    registry: docker.io/nicoz91/mockserver-srv
     tag: latest
 srv:
   bindings:
     destination:
       serviceInstanceName: 'destination'
+    db:
+      serviceInstanceName: hana
   image:
     repository: mockserver-srv
+    tag: latest
   resources:
     limits:
       ephemeral-storage: 1G
@@ -31,3 +34,20 @@ destination:
   servicePlanName: 'lite'
   parameters:
     version: '1.0.0'
+hana-deployer:
+  image:
+    repository: <your-container-registry>/mockserver-hana-deployer
+    tag: latest
+  bindings:
+    hana:
+      serviceInstanceName: hana
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 1G
+    requests:
+      cpu: 1000m
+      memory: 1G
+hana:
+  serviceOfferingName: hana
+  servicePlanName: hdi-shared
